@@ -16,7 +16,8 @@
         <activity
             android:name=".ui.detail.DetailActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppEventDicoding"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

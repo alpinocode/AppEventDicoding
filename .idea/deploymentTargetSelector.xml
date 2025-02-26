@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-02-25T07:25:49.906165500Z">
+        <DropdownSelection timestamp="2025-02-26T05:34:40.951389600Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\GontaGantiPC\.android\avd\Pixel_9_API_35.avd" />

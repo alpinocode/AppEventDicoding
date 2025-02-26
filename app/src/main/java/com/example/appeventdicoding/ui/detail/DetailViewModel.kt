@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.example.appeventdicoding.data.EventRepository
 import com.example.appeventdicoding.data.local.entity.EventDicodingEntity
 import com.example.appeventdicoding.data.remote.response.EventDetailDicodingResponse
-import com.example.appeventdicoding.data.remote.response.ListEventsItem
 import com.example.appeventdicoding.data.remote.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,9 +43,14 @@ class DetailViewModel(private val eventRepository: EventRepository ) :ViewModel(
         })
     }
 
+    fun getFavorite(eventId: Int) = eventRepository.getIsFavoriteEventById(eventId)
+
     fun insertFavorite(eventIsFavorite: EventDicodingEntity) = eventRepository.insertFavorite(eventIsFavorite)
 
-    fun deteleteFavorite(eventId: Int) = eventRepository.deleteIsFavorite(eventId)
+
+    fun deteleteFavorite(event:EventDicodingEntity) {
+        eventRepository.deleteIsFavorite(event, false)
+    }
     companion object {
         private const val TAG = "detail_view_model"
     }

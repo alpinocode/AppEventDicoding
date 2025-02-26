@@ -9,10 +9,8 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.appeventdicoding.R
 import com.example.appeventdicoding.data.local.entity.EventDicodingEntity
@@ -44,6 +42,8 @@ class DetailActivity : AppCompatActivity() {
         if(eventId != 0) {
             viewModel.getDetailEvent(eventId)
 
+
+
             viewModel.eventDetail.observe(this) { data ->
 
                 binding?.namaEvent?.text = data.event.name
@@ -69,29 +69,32 @@ class DetailActivity : AppCompatActivity() {
                     .load(data.event.imageLogo)
                     .into(binding?.imageViewEvent!! )
 
-                var isFavorite = binding?.favoriteBookmark
 
-                isFavorite?.setOnClickListener {
-                    val eventDataLocal = EventDicodingEntity(
-                        data.event.id ?:0,
-                        data.event.endTime ?: "",
-                        data.event.name ?: "",
-                        data.event.imageLogo ?: "",
-                        true
+                viewModel.getFavorite(eventId).observe(this) { eventIsFavorite ->
+                    val isFavorite = eventIsFavorite?.isFavorite ?: false
+                    val drawableRes = if (isFavorite) R.drawable.heart else R.drawable.heart_not_full
+                    binding?.favoriteBookmark?.setImageDrawable(
+                        ContextCompat.getDrawable(this, drawableRes)
                     )
-//                    if (eventDataLocal.isFavorite != null && eventDataLocal.isFavorite) {
-//                        viewModel.deteleteFavorite(eventDataLocal.id)
-//                        isFavorite.apply {
-//                            setImageDrawable(ContextCompat.getDrawable(context, R.drawable.heart_not_full))
-//                        }
-//                    }
 
-                        viewModel.insertFavorite(eventDataLocal)
-                        isFavorite.apply {
-                            setImageDrawable(ContextCompat.getDrawable(context, R.drawable.heart))
+                    binding?.favoriteBookmark?.setOnClickListener {
+                        if (eventIsFavorite != null) {
+                            if (eventIsFavorite.isFavorite) {
+                                viewModel.deteleteFavorite(eventIsFavorite)
+                            } else {
+                                viewModel.insertFavorite(eventIsFavorite)
+                            }
+                        } else {
+                            val eventDataLocal = EventDicodingEntity(
+                                eventId,
+                                data.event.endTime ?: "",
+                                data.event.name ?: "",
+                                data.event.imageLogo ?: "",
+                                true
+                            )
+                            viewModel.insertFavorite(eventDataLocal)
                         }
-
-
+                    }
                 }
             }
 

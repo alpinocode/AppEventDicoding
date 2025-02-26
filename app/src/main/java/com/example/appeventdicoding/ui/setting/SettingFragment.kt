@@ -71,6 +71,11 @@ class SettingFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

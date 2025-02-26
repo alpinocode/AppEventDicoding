@@ -30,9 +30,10 @@
         app:layout_constraintStart_toStartOf="@+id/title_not_found"
         app:layout_constraintEnd_toEndOf="@+id/title_not_found"
         app:layout_constraintTop_toBottomOf="@+id/title_not_found"
-        android:src="@drawable/bookmark"
+        android:src="@drawable/data_not_found"
         android:visibility="gone"
         tools:visibility="visible"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorite_event"
         android:layout_width="match_parent"
@@ -41,8 +42,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="80dp"/>
 
     <ProgressBar
         android:id="@+id/progresbar_favorite"

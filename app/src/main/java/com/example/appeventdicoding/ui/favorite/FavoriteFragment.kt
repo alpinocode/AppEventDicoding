@@ -6,10 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.appeventdicoding.R
 import com.example.appeventdicoding.data.remote.response.ListEventsItem
 import com.example.appeventdicoding.databinding.FragmentFavoriteBinding
 import com.example.appeventdicoding.ui.detail.DetailActivity
@@ -52,6 +51,8 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as? AppCompatActivity)?.supportActionBar?.title = "Favorite"
+
         val factory:ViewModelFactory = ViewModelFactory.getInstance(requireContext())
         val viewModel: FavoriteViewModel by viewModels<FavoriteViewModel> {
             factory
@@ -64,14 +65,14 @@ class FavoriteFragment : Fragment() {
                 binding?.itemBookmarkNotFound?.visibility = View.VISIBLE
             } else {
                 binding?.progresbarFavorite?.visibility = View.GONE
-                val itemsEvent = arrayListOf<ListEventsItem>()
-                val item = ListEventsItem(
-                    id = result.id,
-                    name = result.nameEvent,
-                    imageLogo = result.image,
-                    beginTime = result.publishedAt
-                )
-                itemsEvent.add(item)
+                val itemsEvent = result.map { event ->
+                    ListEventsItem(
+                        id = event.id,
+                        name = event.nameEvent,
+                        imageLogo = event.image,
+                        beginTime = event.publishedAt
+                    )
+                }
                 sumbmitList(itemsEvent)
             }
 
@@ -94,7 +95,13 @@ class FavoriteFragment : Fragment() {
         })
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+    }
+
     companion object {
+        private const val TAG = "Favorite_Fragment"
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.

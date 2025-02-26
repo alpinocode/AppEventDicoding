@@ -15,15 +15,25 @@ class EventRepository private constructor(
         }
     }
 
-    fun getIsFavoriteEvent(): LiveData<EventDicodingEntity> {
+
+    fun getIsFavoriteEvent(): LiveData<List<EventDicodingEntity>> {
         return eventDicodingDao.getFavorite()
     }
 
-    fun deleteIsFavorite(eventId: Int) {
+    fun getIsFavoriteEventById(id:Int): LiveData<EventDicodingEntity> {
+        return eventDicodingDao.getData(id)
+    }
+
+    fun deleteIsFavorite(eventFavorite: EventDicodingEntity, isFavoriteState: Boolean) {
         appExecutor.diskIO.execute {
-            eventDicodingDao.deleteAll(eventId)
+            val existingEvent = eventDicodingDao.getDataSync(eventFavorite.id)
+            if (existingEvent != null) {
+                existingEvent.isFavorite = isFavoriteState
+                eventDicodingDao.updateEvent(existingEvent)
+            }
         }
     }
+
 
 
 
