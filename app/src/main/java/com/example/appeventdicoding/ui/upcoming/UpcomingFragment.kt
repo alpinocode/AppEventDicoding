@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -72,6 +73,9 @@ class UpcomingFragment : Fragment() {
                 val contextUpcoming = binding?.root?.context
                 val intent = Intent(contextUpcoming, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.EVENT_ID, data.id)
+                if(DetailActivity.EVENT_ID == null) {
+                    Toast.makeText(requireContext(), "Event Id Tidak Dapat Ditemukan ", Toast.LENGTH_SHORT).show()
+                }
                 contextUpcoming?.startActivity(intent)
             }
         })

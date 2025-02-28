@@ -24,13 +24,9 @@ class EventRepository private constructor(
         return eventDicodingDao.getData(id)
     }
 
-    fun deleteIsFavorite(eventFavorite: EventDicodingEntity, isFavoriteState: Boolean) {
+    fun deleteIsFavorite(eventId:Int) {
         appExecutor.diskIO.execute {
-            val existingEvent = eventDicodingDao.getDataSync(eventFavorite.id)
-            if (existingEvent != null) {
-                existingEvent.isFavorite = isFavoriteState
-                eventDicodingDao.updateEvent(existingEvent)
-            }
+           eventDicodingDao.deleteAll(eventId)
         }
     }
 

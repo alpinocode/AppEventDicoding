@@ -6,33 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/title_not_found"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="528dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/data_tidak_ada"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:visibility="visible"
-        tools:visibility="gone"
-        />
 
-    <ImageView
-        android:id="@+id/item_bookmark_not_found"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_data_not_found"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@+id/title_not_found"
-        app:layout_constraintEnd_toEndOf="@+id/title_not_found"
-        app:layout_constraintTop_toBottomOf="@+id/title_not_found"
-        android:src="@drawable/data_not_found"
-        android:visibility="gone"
-        tools:visibility="visible"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_rawRes="@raw/animation"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorite_event"

@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -38,7 +39,6 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val eventId = intent.getIntExtra(EVENT_ID, 0)
-        Log.d("Detail Activity", "Cek Data EventId ${eventId}")
         if(eventId != 0) {
             viewModel.getDetailEvent(eventId)
 
@@ -70,6 +70,9 @@ class DetailActivity : AppCompatActivity() {
                     .into(binding?.imageViewEvent!! )
 
 
+                viewModel.isLoading.observe(this) {
+                    showLoading(it)
+                }
                 viewModel.getFavorite(eventId).observe(this) { eventIsFavorite ->
                     val isFavorite = eventIsFavorite?.isFavorite ?: false
                     val drawableRes = if (isFavorite) R.drawable.heart else R.drawable.heart_not_full
@@ -80,7 +83,7 @@ class DetailActivity : AppCompatActivity() {
                     binding?.favoriteBookmark?.setOnClickListener {
                         if (eventIsFavorite != null) {
                             if (eventIsFavorite.isFavorite) {
-                                viewModel.deteleteFavorite(eventIsFavorite)
+                                viewModel.deteleteFavorite(eventIsFavorite.id)
                             } else {
                                 viewModel.insertFavorite(eventIsFavorite)
                             }
@@ -98,19 +101,19 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
 
-            viewModel.isLoading.observe(this) {
-                showLoading(it)
-            }
+
         }
     }
 
     private fun showLoading(isLoading:Boolean) {
         if (isLoading) {
             binding?.progresbar?.visibility = View.VISIBLE
-            binding?.progresbar?.visibility = View.GONE
+            binding?.toUrlEventDicoding?.visibility = View.GONE
+            binding?.favoriteBookmark?.visibility = View.GONE
         } else {
             binding?.progresbar?.visibility = View.GONE
             binding?.toUrlEventDicoding?.visibility = View.VISIBLE
+            binding?.favoriteBookmark?.visibility = View.VISIBLE
         }
     }
 

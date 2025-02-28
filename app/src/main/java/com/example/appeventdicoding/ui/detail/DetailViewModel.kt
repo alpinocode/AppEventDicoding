@@ -48,8 +48,8 @@ class DetailViewModel(private val eventRepository: EventRepository ) :ViewModel(
     fun insertFavorite(eventIsFavorite: EventDicodingEntity) = eventRepository.insertFavorite(eventIsFavorite)
 
 
-    fun deteleteFavorite(event:EventDicodingEntity) {
-        eventRepository.deleteIsFavorite(event, false)
+    fun deteleteFavorite(eventId: Int) {
+        eventRepository.deleteIsFavorite(eventId)
     }
     companion object {
         private const val TAG = "detail_view_model"

@@ -16,5 +16,9 @@ interface ApiService {
     fun getEventDetail(
         @Path("id") id: Int
     ): Call<EventDetailDicodingResponse>
-
+    @GET("events")
+    fun getReminder(
+        @Query("active") active: Int,
+        @Query("limit") limit: Int
+    ): Call<EventDicodingResponse>
 }

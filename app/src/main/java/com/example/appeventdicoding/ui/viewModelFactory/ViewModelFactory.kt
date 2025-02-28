@@ -7,7 +7,6 @@ import com.example.appeventdicoding.data.EventRepository
 import com.example.appeventdicoding.di.Injection
 import com.example.appeventdicoding.ui.detail.DetailViewModel
 import com.example.appeventdicoding.ui.favorite.FavoriteViewModel
-import com.example.appeventdicoding.ui.home.HomeViewModel
 
 class ViewModelFactory private constructor(private val eventRepository: EventRepository): ViewModelProvider.NewInstanceFactory(){
     @Suppress("UNCHECKEE_CAST")

@@ -10,6 +10,7 @@
     <string name="title_waktu_acara">21:53 20/02/2025</string>
 
     <string name="dark_mode">Dark Mode</string>
-
+    <string name="reminder">Daily Reminder</string>s
+    
     <string name="data_tidak_ada">Data Tidak Ada</string>
 </resources>
