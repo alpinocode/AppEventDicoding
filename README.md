@@ -8,7 +8,8 @@ Event App UI is an application designed to display event lists categorized as Up
 
 1. Upcoming Events
   <br/>
-  ![Uploading Screenshot 2025-03-09 202854.png…]()
+ ![Screenshot 2025-03-09 202854](https://github.com/user-attachments/assets/17912cde-2b33-4afc-8a07-13bd6e7ecf77)
+
 
 
 
@@ -22,29 +23,30 @@ Event App UI is an application designed to display event lists categorized as Up
   ![Screenshot 2025-03-09 202911](https://github.com/user-attachments/assets/00925d05-f4ef-4cfe-ad1b-a4e19bd87f7e)
 
 
-  <br/>
+
 4. Pengaturan
   <br/>
   ![Screenshot 2025-03-09 202929](https://github.com/user-attachments/assets/e4dc1370-8cbb-4855-a2ba-cbf94ba072f7)
 
-  <br/>
+
+
+
 5. Settings with Notifications
     <br/>
   ![Screenshot 2025-03-09 202939](https://github.com/user-attachments/assets/9285bf00-84f9-4a04-97cb-fa8cded26faa)
 
-    <br/>
+
+
 6. Dark Mode
   <br/>
   ![Screenshot 2025-03-09 202958](https://github.com/user-attachments/assets/b47e18d8-2e61-459f-8e64-646c6af770ed)
 
   
-  <br/>
+
 7. Detail Event
    <br/>
 ![Screenshot 2025-03-09 202323](https://github.com/user-attachments/assets/79cbd546-f59a-4eeb-84a1-d6572bb573f0)
 
-
-<br/>
 
 
 8. Detail Favorite Event
