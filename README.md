@@ -33,6 +33,8 @@ Event App UI adalah aplikasi yang dirancang untuk menampilkan daftar event berda
 
 
 
+
+
 7. Detail Favorite Event
 ![Screenshot 2025-03-09 202103](https://github.com/user-attachments/assets/90901aad-44a3-4219-85fd-181534e2ea89)
 
