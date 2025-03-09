@@ -1,39 +1,50 @@
 Event App UI - Dicoding
 
+📌 Description
 
+Event App UI is an application designed to display event lists categorized as Upcoming, Finished, and Favorite. This app also provides settings and event detail features.
 
-📌 Deskripsi
-
-Event App UI adalah aplikasi yang dirancang untuk menampilkan daftar event berdasarkan kategori Upcoming, Finished, dan Favorite. Aplikasi ini juga menyediakan fitur pengaturan dan detail event.
-
-📷 Tangkapan Layar
+📷 Screenshots
 
 1. Upcoming Events
-  
+  <br/>
+  ![Uploading Screenshot 2025-03-09 202854.png…]()
+
 
 
 2. Finished Events
-
+  <br/>
+  ![Screenshot 2025-03-09 202903](https://github.com/user-attachments/assets/7247ba32-df72-4756-8f7a-32ac2f27981b)
 
 
 3. Favorite Events
+  <br/>
+  ![Screenshot 2025-03-09 202911](https://github.com/user-attachments/assets/00925d05-f4ef-4cfe-ad1b-a4e19bd87f7e)
 
 
-
+  <br/>
 4. Pengaturan
+  <br/>
+  ![Screenshot 2025-03-09 202929](https://github.com/user-attachments/assets/e4dc1370-8cbb-4855-a2ba-cbf94ba072f7)
 
+  <br/>
+5. Settings with Notifications
+    <br/>
+  ![Screenshot 2025-03-09 202939](https://github.com/user-attachments/assets/9285bf00-84f9-4a04-97cb-fa8cded26faa)
 
+    <br/>
+6. Dark Mode
+  <br/>
+  ![Screenshot 2025-03-09 202958](https://github.com/user-attachments/assets/b47e18d8-2e61-459f-8e64-646c6af770ed)
 
-5. Pengaturan dengan Notifikasi
-
-
-
-6. Detail Event
+  
+  <br/>
+7. Detail Event
    <br/>
 ![Screenshot 2025-03-09 202323](https://github.com/user-attachments/assets/79cbd546-f59a-4eeb-84a1-d6572bb573f0)
 
 
-
+<br/>
 
 
 8. Detail Favorite Event
@@ -42,68 +53,69 @@ Event App UI adalah aplikasi yang dirancang untuk menampilkan daftar event berda
 
 
 
-🚀 Fitur Utama
+🚀 Main Features
 
-✅ Menampilkan event berdasarkan kategori Upcoming, Finished, dan Favorite✅ Melihat detail event✅ Menyimpan event ke daftar favorit✅ Mengatur preferensi pengguna melalui menu Settings✅ Notifikasi pengingat event
+✅ Display events based on categories: Upcoming, Finished, and Favorite✅ View event details✅ Save events to the favorite list✅ Configure user preferences through the Settings menu✅ Event reminder notifications
 
-🛠 Teknologi yang Digunakan
+🛠 Technologies Used
 
 Kotlin
 
-MVVM Architecture
-
 LiveData
 
-Glide (untuk gambar event)
+Glide (for event images)
 
 RecyclerView
 
 Navigation Component
 
-📦 Instalasi & Menjalankan Aplikasi
+📦 Installation & Running the App
 
-Clone Repository
+Clone the Repository
 
 git clone https://github.com/username/repository-name.git
 cd repository-name
 
-Buka di Android Studio
+Open in Android Studio
 
-Buka Android Studio
+Open Android Studio
 
-Pilih Open an Existing Project
+Select Open an Existing Project
 
-Arahkan ke folder proyek ini
+Navigate to the project folder
 
-Jalankan Aplikasi
+Run the Application
 
-Hubungkan perangkat atau gunakan emulator
+Connect a device or use an emulator
 
-Klik Run ▶️
+Click Run ▶️
 
-🤝 Kontribusi
+🤝 Contribution
 
-Jika ingin berkontribusi dalam proyek ini:
+If you would like to contribute to this project:
 
-Fork repository ini
+Fork this repository
 
-Buat branch baru (git checkout -b feature-branch)
+Create a new branch (git checkout -b feature-branch)
 
-Lakukan perubahan
+Make changes
 
-Commit perubahan (git commit -m "Menambahkan fitur X")
+Commit the changes (git commit -m "Added feature X")
 
-Push ke branch (git push origin feature-branch)
+Push to the branch (git push origin feature-branch)
 
-Buat Pull Request
+Create a Pull Request
 
-📜 Lisensi
+📜 License
 
-Proyek ini dilisensikan di bawah MIT License.
+This project is licensed under the MIT License.
 
-✨ Kontak & Informasi
+✨ Contact & Information
 
-📧 Email: alfinohasan@gmail.com🔗 LinkedIn: https://www.linkedin.com/in/alfino-hasan-4567292b2/🐦
+📧 Email: alfinohasan@gmail.com🔗 LinkedIn: Alfino Hasan
+
+For any questions or suggestions, feel free to reach out! 🚀
+
 
 Jika ada pertanyaan atau saran, jangan ragu untuk menghubungi! 🚀
 
