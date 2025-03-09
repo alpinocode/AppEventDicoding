@@ -15,11 +15,15 @@ class HomeViewModel : ViewModel() {
     private val _listEventsFinished = MutableLiveData<List<ListEventsItem>>()
     val listEventsFinished: LiveData<List<ListEventsItem>> = _listEventsFinished
 
+    private val _listEventsUpcomming = MutableLiveData<List<ListEventsItem>>()
+    val listEventsUpcomming: LiveData<List<ListEventsItem>> = _listEventsUpcomming
+
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
     init {
         getEventFinished()
+        getEventUpcoming()
     }
     private fun getEventFinished() {
         _isLoading.value = true
@@ -31,9 +35,33 @@ class HomeViewModel : ViewModel() {
             ) {
                 _isLoading.value = false
                 if(response.isSuccessful) {
+                    _listEventsFinished.value = response.body()?.listEvents as List<ListEventsItem>?
+                } else {
+                    Log.e(TAG, "OnFailure Response: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<EventDicodingResponse>, t: Throwable) {
+                Log.e(TAG, "OnFailure : ${t.message}")
+            }
+
+
+        })
+    }
+
+    private fun getEventUpcoming() {
+        _isLoading.value = true
+        val client = ApiConfig.getApiService().getEvent(EVENT_UPCOMING)
+        client.enqueue(object : Callback<EventDicodingResponse> {
+            override fun onResponse(
+                call: Call<EventDicodingResponse>,
+                response: Response<EventDicodingResponse>
+            ) {
+                _isLoading.value = false
+                if(response.isSuccessful) {
                     val result = response.body()
                     Log.d(TAG, "Cek Body nya : ${result}")
-                    _listEventsFinished.value = response.body()?.listEvents as List<ListEventsItem>?
+                    _listEventsUpcomming.value = response.body()?.listEvents as List<ListEventsItem>?
                 } else {
                     Log.e(TAG, "OnFailure Response: ${response.message()}")
                 }
@@ -50,5 +78,6 @@ class HomeViewModel : ViewModel() {
     companion object{
         private const val TAG = "home_view_model"
         private const val EVENT_FINISHED = 0
+        private const val EVENT_UPCOMING = 1
     }
 }

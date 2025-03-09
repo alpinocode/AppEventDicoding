@@ -23,7 +23,7 @@ import kotlinx.coroutines.withContext
 
 
 class SettingWorker(context:Context, workerParameters: WorkerParameters) : CoroutineWorker(context, workerParameters) {
-    // jalankan dengan coroutine
+    // jalankan dengan coroutineWorker
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         try {
             val response = ApiConfig.getApiService().getReminder(EVENT_ACTIVE, EVENT_LIMIT).execute()

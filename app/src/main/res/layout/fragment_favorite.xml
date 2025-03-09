@@ -7,6 +7,18 @@
     tools:context=".ui.home.HomeFragment">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_favorit"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        tools:ignore="MissingConstraints" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_data_not_found"
         android:layout_width="350dp"
@@ -28,7 +40,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="80dp"/>
 
     <ProgressBar

@@ -2,13 +2,19 @@ package com.example.appeventdicoding.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.example.appeventdicoding.R
 import com.example.appeventdicoding.data.remote.response.ListEventsItem
 import com.example.appeventdicoding.databinding.FragmentHomeBinding
 import com.example.appeventdicoding.ui.detail.DetailActivity
@@ -16,6 +22,7 @@ import com.example.appeventdicoding.ui.setting.SettingPrefenrece
 import com.example.appeventdicoding.ui.setting.SettingViewModel
 import com.example.appeventdicoding.ui.setting.ViewModelFactorySetting
 import com.example.appeventdicoding.ui.setting.dataStore
+import com.example.appeventdicoding.ui.upcoming.UpcomingFragment
 import com.example.eventdicoding.ui.Adapter.EventDicodingAdapter
 
 class HomeFragment : Fragment() {
@@ -37,6 +44,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.hide()
 
         val viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
@@ -45,6 +53,8 @@ class HomeFragment : Fragment() {
         val settingViewModel = ViewModelProvider(this, ViewModelFactorySetting(prefHome)).get(
             SettingViewModel::class.java
         )
+
+
 
         settingViewModel.getThemeSettings().observe(viewLifecycleOwner, { isDarkMode ->
             if (isDarkMode){
@@ -56,6 +66,24 @@ class HomeFragment : Fragment() {
 
         viewModel.listEventsFinished.observe(viewLifecycleOwner) {
             setListEventData(it)
+        }
+
+        viewModel.listEventsUpcomming.observe(viewLifecycleOwner) {
+
+            val data = it.first()
+            Log.d("HomeFragment", "Cek Data Home Fragment Upcoming ${data}")
+            binding.upcomingTextOwnerHome.text = data.ownerName
+            binding.upcomingTextJudulHome.text = data.name
+            binding.upcomingTitleDateHome.text = data.endTime
+            Glide.with(requireContext())
+                .load(data.imageLogo)
+                .into(binding.upcomingImageHome)
+            binding.upcomingCardHome.setOnClickListener {
+                val context = binding.root.context
+                val intent = Intent(requireContext(), DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EVENT_ID, data.id)
+                context.startActivity(intent)
+            }
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) {
