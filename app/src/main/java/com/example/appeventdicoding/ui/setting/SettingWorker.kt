@@ -73,7 +73,7 @@ class SettingWorker(context:Context, workerParameters: WorkerParameters) : Corou
 
         val notificationManager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notification:NotificationCompat.Builder = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
-            .setSmallIcon(R.drawable.baseline_notifications_24)
+            .setSmallIcon(R.drawable.ic_notifications_black_24dp)
             .setContentTitle(title)
             .setContentText(description)
             .setLargeIcon(bitmap)

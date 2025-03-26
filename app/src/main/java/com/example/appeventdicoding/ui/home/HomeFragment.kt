@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
@@ -70,20 +71,30 @@ class HomeFragment : Fragment() {
 
         viewModel.listEventsUpcomming.observe(viewLifecycleOwner) {
 
-            val data = it.first()
-            Log.d("HomeFragment", "Cek Data Home Fragment Upcoming ${data}")
-            binding.upcomingTextOwnerHome.text = data.ownerName
-            binding.upcomingTextJudulHome.text = data.name
-            binding.upcomingTitleDateHome.text = data.endTime
-            Glide.with(requireContext())
-                .load(data.imageLogo)
-                .into(binding.upcomingImageHome)
-            binding.upcomingCardHome.setOnClickListener {
-                val context = binding.root.context
-                val intent = Intent(requireContext(), DetailActivity::class.java)
-                intent.putExtra(DetailActivity.EVENT_ID, data.id)
-                context.startActivity(intent)
+            val data = it.firstOrNull()
+            if(data != null) {
+                Log.d("HomeFragment", "Cek Data Home Fragment Upcoming ${data}")
+                binding.upcomingTextOwnerHome.text = data.ownerName
+                binding.upcomingTextJudulHome.text = data.name
+                binding.upcomingTitleDateHome.text = data.endTime
+                Glide.with(requireContext())
+                    .load(data.imageLogo)
+                    .into(binding.upcomingImageHome)
+                binding.upcomingCardHome.setOnClickListener {
+                    val context = binding.root.context
+                    val intent = Intent(requireContext(), DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.EVENT_ID, data.id)
+                    context.startActivity(intent)
+                }
+            } else {
+                binding.upcomingCardHome.setOnClickListener {
+                    Toast.makeText(requireContext(), "Data Ini Tidak Ada", Toast.LENGTH_SHORT).show()
+                }
+                binding.upcomingTextJudulHome.text = "Tidak Ada"
+                binding.upcomingTextJudulHome.text = "Tidak Ada"
+                binding.upcomingTitleDateHome.text = "Belum Ada"
             }
+
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) {
